@@ -444,9 +444,9 @@ myisam_max_sort_file_size = <%= node["percona"]["server"]["myisam_max_sort_file_
 # thread to repair them by sorting in parallel. This makes sense if you
 # have multiple CPUs and plenty of memory.
 myisam_repair_threads = <%= node["percona"]["server"]["myisam_repair_threads"] %>
+<% if node["percona"]["server"]["myisam_recover_options"] and node["percona"]["version"] < "5.7" %>
 
 # Automatically check and repair not properly closed MyISAM tables.
-<% if node["percona"]["server"]["myisam_recover_options"] and node["percona"]["version"] < "5.7" %>
 myisam_recover
 <% end %>
 
@@ -463,13 +463,13 @@ myisam_recover
 <% if node["percona"]["server"]["skip_innodb"] %>
 skip-innodb
 <% end %>
+<% if node["percona"]["version"] < "5.7" %>
 
 # Additional memory pool that is used by InnoDB to store metadata
 # information.  If InnoDB requires more memory for this purpose it will
 # start to allocate it from the OS.  As this is fast enough on most
 # recent operating systems, you normally do not need to change this
 # value. SHOW INNODB STATUS will display the current amount used.
-<% unless node["percona"]["version"] == "5.7" %>
 innodb_additional_mem_pool_size = <%= node["percona"]["server"]["innodb_additional_mem_pool_size"] %>
 <% end %>
 

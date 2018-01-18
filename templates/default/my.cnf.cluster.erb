@@ -87,7 +87,9 @@ wsrep_sst_receive_address      = <%= node["percona"]["cluster"]["wsrep_sst_recei
 <%  unless node["percona"]["cluster"]["wsrep_sst_auth"].empty? -%>
 wsrep_sst_auth                 = <%= node["percona"]["cluster"]["wsrep_sst_auth"] %>
 <% end -%>
+<%  unless node["percona"]["version"] == "5.7" -%>
 innodb_locks_unsafe_for_binlog = <%= node["percona"]["cluster"]["innodb_locks_unsafe_for_binlog"] %>
+<% end -%>
 innodb_autoinc_lock_mode       = <%= node["percona"]["cluster"]["innodb_autoinc_lock_mode"] %>
 
 
@@ -399,7 +401,7 @@ myisam_max_sort_file_size = <%= node["percona"]["server"]["myisam_max_sort_file_
 myisam_repair_threads = <%= node["percona"]["server"]["myisam_repair_threads"] %>
 
 # Automatically check and repair not properly closed MyISAM tables.
-<% if node["percona"]["server"]["myisam_recover_options"] %>
+<% if node["percona"]["server"]["myisam_recover_options"] and node["percona"]["version"] < "5.7" %>
 myisam_recover
 <% end %>
 
@@ -422,7 +424,9 @@ skip-innodb
 # start to allocate it from the OS.  As this is fast enough on most
 # recent operating systems, you normally do not need to change this
 # value. SHOW INNODB STATUS will display the current amount used.
+<% unless node["percona"]["version"] == "5.7" %>
 innodb_additional_mem_pool_size = <%= node["percona"]["server"]["innodb_additional_mem_pool_size"] %>
+<% end %>
 
 # This config file assumes a main memory of at least 8G
 innodb_buffer_pool_size = <%= node["percona"]["server"]["innodb_buffer_pool_size"] %>

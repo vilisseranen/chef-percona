@@ -14,6 +14,7 @@ end
 
 default["percona"]["version"] = "5.6"
 default["percona"]["server"]["id"] = 1
+default["percona"]["server"]["pxc-strict-mode"] = 'ENFORCING'
 
 # Always restart percona on configuration changes
 default["percona"]["auto_restart"] = true

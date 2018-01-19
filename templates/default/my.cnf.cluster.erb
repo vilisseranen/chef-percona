@@ -55,6 +55,7 @@ slave_load_tmpdir     = <%= node["percona"]["server"]["slave_load_tmpdir"] %>
 character_set_server  = <%= node["percona"]["server"]["character_set"] %>
 collation_server      = <%= node["percona"]["server"]["collation"] %>
 server-id             = <%= node["percona"]["server"]["id"] %>
+pxc-strict-mode       = <%= node["percona"]["server"]["pxc-strict-mode"] %>
 
 <% if node["percona"]["server"]["federated"] %>
 federated

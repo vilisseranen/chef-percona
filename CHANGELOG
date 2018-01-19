@@ -1,4 +1,7 @@
 # Changelog
 
+## 0.16.8
+ccontini - Handle pxc-strict-mode
+
 ## 0.16.7
 ccontini - Adapt for Percona 5.7

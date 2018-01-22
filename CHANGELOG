@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.16.9
+ccontini - Do not provide server-id and pxc-strict-mode if version < 5.7
+
 ## 0.16.8
 ccontini - Handle pxc-strict-mode
 

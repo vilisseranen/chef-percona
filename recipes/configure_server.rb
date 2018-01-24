@@ -115,13 +115,6 @@ execute "setup mysql datadir" do
   action :nothing
 end
 
-execute "setup mysql datadir" do
-  command "mysqld --defaults-file=#{percona["main_config_file"]} --initialize-insecure --user=#{user}" # rubocop:disable LineLength
-  not_if "test -f #{datadir}/mysql/user.frm"
-  only_if { percona["version"] == "5.7" }
-  action :nothing
-end
-
 # install SSL certificates before config phase
 if node["percona"]["server"]["replication"]["ssl_enabled"]
   include_recipe "percona::ssl"

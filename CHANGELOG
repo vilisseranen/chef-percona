@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.16.10
+ccontini - Remove duplicate mysql conf command
+
 ## 0.16.9
 ccontini - Do not provide server-id and pxc-strict-mode if version < 5.7
 

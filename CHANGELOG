@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.16.11
+ccontini - Replace node.set by node.default in recipes for chef 13+ compatibility
+
 ## 0.16.10
 ccontini - Remove duplicate mysql conf command
 

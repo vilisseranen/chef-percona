@@ -7,14 +7,14 @@ node.default["percona"]["backup"]["configure"] = true
 
 include_recipe "percona::package_repo"
 
-case node["platform_family"]
-when "debian"
-  package "xtrabackup" do
-    options "--force-yes"
+package "xtrabackup" do
+  case node['percona']['version']
+  when '5.7'
+    package_name 'percona-xtrabackup-24'
+  else
+    package_name 'percona-xtrabackup'
   end
-when "rhel"
-  package "percona-xtrabackup" unless node['percona']['version'] == '5.7'
-  package "percona-xtrabackup-24" if node['percona']['version'] == '5.7'
+  options "--force-yes" unless node['platform_family']['rhel']
 end
 
 # access grants

@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.16.12
+ccontini - update xtrabackup on Ubuntu and compute right libdev packages name
+
 ## 0.16.11
 ccontini - Replace node.set by node.default in recipes for chef 13+ compatibility
 

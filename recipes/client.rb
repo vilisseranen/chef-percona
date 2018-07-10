@@ -15,7 +15,8 @@ when "debian"
   abi_version = case version
                 when "5.5" then "18"
                 when "5.6" then "18.1"
-                else ""
+                when "5.7" then "20"
+                else "20"
                 end
 
   if Array(node["percona"]["server"]["role"]).include?("cluster")

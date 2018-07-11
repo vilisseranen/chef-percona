@@ -21,7 +21,7 @@ when "debian"
 
   if Array(node["percona"]["server"]["role"]).include?("cluster")
     node.default["percona"]["client"]["packages"] = %W[
-      libperconaserverclient#{abi_version}-dev percona-xtradb-cluster-client-#{version}
+      percona-xtradb-cluster-client-#{version}
     ]
   else
     node.default["percona"]["client"]["packages"] = %W[

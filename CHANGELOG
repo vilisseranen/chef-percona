@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.16.13
+ccontini - Remove libperconaserver-* install on cluster nodes as it conflicts with cluster packages
+
 ## 0.16.12
 ccontini - update xtrabackup on Ubuntu and compute right libdev packages name
 
